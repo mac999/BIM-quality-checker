@@ -1,0 +1,182 @@
+{
+	"project": {
+		"name": "BIM quality check project (example)",
+		"description": "This project is for BIM quality check example(https://github.com/mac999/BIM-quality-checker.git)",
+		"version": "1.0",
+		"author": "Taewook Kang",
+		"email": "laputa99999@gmail.com"
+	},
+	"validation_rules": [
+		{
+			"name": "COBie data check",
+			"COBie_table": "Space",
+			"file_format": [".xlsx", ".xls", ".csv"],
+			"classification_system": "uniclass(2015), omniclass",
+			"checks": [
+				{
+					"name": "Area Check",
+					"description": "Validate the gross floor area of spaces",
+					"attribute": "GrossArea",
+					"condition": {
+						"type": "range",
+						"min": 300,
+						"max": 320,
+						"tolerance_min": -2,
+						"tolerance_max": 2,
+						"units": "m2"
+					}
+				},
+				{
+					"name": "Area Check by equation",
+					"description": "Validate the gross floor area of spaces by equation",
+					"attribute": "GrossArea",
+					"condition": {
+						"type": "equation",
+						"equation": "value > 100",
+						"units": "m2"
+					}
+				},				
+				{
+					"name": "Functional Category Validation",
+					"description": "Ensure the functional category of spaces matches project requirements",
+					"attribute": "Category",
+					"condition": {
+						"type": "list",
+						"categories": [
+							{
+								"code": ".*SL_25_10_14.*",
+								"name": "Class rooms"
+							},
+							{
+								"code": ".*SL_20_15_59.*",
+								"name": "Offices"
+							}
+						]
+					}
+				},
+				{
+					"name": "Space Classification Check by Script",
+					"description": "Ensure spaces align with required OmniClass classifications",
+					"attribute": "Classification",
+					"condition": {
+						"type": "code",
+						"code": "print('code check')/nprint(value)/nissue_list.add('cls', 'all', 'check', check_name, False)"
+					}
+				}, 
+				{
+					"name": "All COBie model check by Script",
+					"description": "Ensure all COBie model elements are valid",
+					"condition": {
+						"type": "script", 
+						"script_file": "cobie_model_check.py"
+					}
+				}				
+			]
+		},
+		{
+			"name": "IFC space data check",			
+			"IFC_entity": "IfcSpace",
+			"file_format": [".ifc"],
+			"classification_system": "uniclass(2015), omniclass",
+			"checks": [			
+				{
+					"name": "Functional Category Validation in IFC",
+					"description": "Ensure the functional category of spaces matches project requirements in IFC",
+					"attribute": "PSet_Revit_Identity Data.OmniClass Table 13 Category",
+					"condition": {
+						"type": "list",
+						"categories": [
+							{
+								"code": ".*13-51 24 11.*",
+								"name": "General Residential Space"
+							}					
+						]
+					}
+				}, 
+				{
+					"name": "Space Classification Check by Script in IFC",
+					"description": "Ensure spaces align with required OmniClass classifications",
+					"attribute": "Classification",
+					"condition": {
+						"type": "code",
+						"code": "print('code check')/nprint(value)/nissue_list.add('cls', 'all', 'check', False)"
+					}
+				}
+			]
+		},
+		{
+			"name": "IFC zone data check",			
+			"IFC_entity": "IfcZone",
+			"file_format": [".ifc"],
+			"checks": [
+				{
+					"name": "Zone Area Check",
+					"description": "Validate total area of zones",
+					"attribute": "TotalArea",
+					"condition": {
+						"type": "range",
+						"min": 300,
+						"max": 320,
+						"tolerance_min": -2,
+						"tolerance_max": 2,
+						"units": "m2"
+					}
+				}
+			]
+	  	},
+		{
+			"name": "IFC system data check",			
+			"IFC_entity": "IfcSystem",
+			"file_format": [".ifc"],
+			"checks": [
+				{
+					"name": "System Assignment Check",
+					"description": "Ensure all spaces are assigned to a valid system",
+					"attribute": "AssignedSpaces",
+					"condition": {
+						"type": "non_empty"
+					}
+				},
+				{
+					"name": "System Classification Check",
+					"description": "Ensure systems align with required OmniClass classifications",
+					"attribute": "Classification",
+					"condition": {
+						"type": "list",
+						"categories": [
+							{
+								"code": "21-05 10 00",
+								"name": "HVAC Systems"
+							},
+							{
+								"code": "21-05 20 00",
+								"name": "Electrical Systems"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "IFC all model check",			
+			"IFC_entity": "*",
+			"file_format": [".ifc"],
+			"checks": [
+				{
+					"name": "All IFC model check by Script",
+					"description": "Ensure all IFC model elements are valid",
+					"condition": {
+						"type": "script", 
+						"script_file": "ifc_model_check.py"
+					}
+				}
+			]
+		}
+	],
+	"output": {
+		"report_format": "spreadsheet",
+		"include_details": true,
+		"output_path": "validation_results.exls"
+	}
+}
+  
