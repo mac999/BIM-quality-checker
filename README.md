@@ -22,15 +22,14 @@ This project will continue to be developed in the future.
 ## 0.2 version
 - IFC 4.0 support.
 - Error message and Bug fixed.
+### Future plan
+Add more features including LandXML, IFC various types, BCF support. 
 
 # Instruct
 - 1. Upload [BIM Check Ruleset JSON Configuration File](https://github.com/mac999/BIM-quality-checker/blob/main/bim-check-config.json)
 - 2. Upload BIM Files (COBie xlsx, csv. IFC. LandXML)
 - 3. Click 'Run' to check BIM data quality
 - 4. Download the Quality Report
-
-# Future plan
-Add more features including LandXML, IFC various types, IFC 4.0 support.
 
 # Ruleset Configuration File
 The tool uses a JSON configuration file to define the validation rules. Below are the main sections:
