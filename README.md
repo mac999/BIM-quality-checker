@@ -4,6 +4,7 @@ BQC is a web application for checking the quality of BIM datasets, specifically 
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img2.gif" width=800/>
 
 # Features
+## 0.1 version
 - Validate IFC files for compliance with BIM standards.
 - Validate COBie files for data integrity and completeness.
 - Customizable rules for data validation.
@@ -17,6 +18,10 @@ BQC is a web application for checking the quality of BIM datasets, specifically 
 This project will continue to be developed in the future.
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img1.JPG" width=800/></br>
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img4.JPG" width=800/>
+
+## 0.2 version
+- IFC 4.0 support.
+- Error message and Bug fixed.
 
 # Instruct
 - 1. Upload [BIM Check Ruleset JSON Configuration File](https://github.com/mac999/BIM-quality-checker/blob/main/bim-check-config.json)
