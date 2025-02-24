@@ -11,7 +11,7 @@ BQC is a web application for checking the quality of BIM datasets, specifically 
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img4.JPG" width=800/>
 
 # Instruct
-- 1. Upload BIM Check Ruleset JSON Configuration File
+- 1. Upload [BIM Check Ruleset JSON Configuration File](https://github.com/mac999/BIM-quality-checker/blob/main/bim-check-config.json)
 - 2. Upload BIM Files (COBie xlsx, csv. IFC. LandXML)
 - 3. Click 'Run' to check BIM data quality
 - 4. Download the Quality Report
