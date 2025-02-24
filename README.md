@@ -24,3 +24,14 @@ Taewook Kang (laputa99999@gmail.com)
 
 # License
 This project is licensed under the MIT License. See the LICENSE file for more details.
+
+# Acknowledge
+Thanks for the contributions.
+- fastapi
+- pydantic
+- Gradio
+- reportlab
+- pandas
+- ifcopenshell
+- openpyxl
+- fpdf
