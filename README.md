@@ -170,6 +170,14 @@ Custom scripts can be used for advanced validation. Example:
 Develop by Taewook Kang (laputa99999@gmail.com)
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
+# Reference
+- [UK BIM Alliance](https://wearenima.im/resources/bim-collaboration-format-bcf/)
+- [BCF-XML](https://github.com/BuildingSMART/BCF-XML)
+- [BCF-API](https://github.com/buildingSMART/BCF-API)
+- [BCF, Leica](https://cyclone3dr.leica-geosystems.com/help/2024.1/BCFBimCollaborationFormat.html)
+- [OpenCDE](https://github.com/buildingSMART/OpenCDE-API)
+- [BCF viewer](https://github.com/andrewisen-tikab/three-bcf)
+
 # Acknowledge
 Thanks for the contributions.
 - fastapi
