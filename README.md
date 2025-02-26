@@ -177,6 +177,7 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 - [BCF, Leica](https://cyclone3dr.leica-geosystems.com/help/2024.1/BCFBimCollaborationFormat.html)
 - [OpenCDE](https://github.com/buildingSMART/OpenCDE-API)
 - [BCF viewer](https://github.com/andrewisen-tikab/three-bcf)
+- [BCFViewer – BIM Collaboration Format tool](https://mediatum.ub.tum.de/doc/1688406/week8e2xre60ypmpztts99l9n.Lourenzi%20et%20Al.%202022.pdf)
 
 # Acknowledge
 Thanks for the contributions.
