@@ -12,6 +12,7 @@
 			"COBie_table": "Space",
 			"file_format": [".xlsx", ".xls", ".csv"],
 			"classification_system": "uniclass(2015), omniclass",
+			"notify": "BIM-coordinator@gmail.com",
 			"checks": [
 				{
 					"name": "Area Check",
@@ -78,6 +79,7 @@
 			"IFC_entity": "IfcSpace",
 			"file_format": [".ifc"],
 			"classification_system": "uniclass(2015), omniclass",
+			"notify": "BIM-modeler@gmail.com",
 			"checks": [			
 				{
 					"name": "Functional Category Validation in IFC",
@@ -108,6 +110,7 @@
 			"name": "IFC zone data check",			
 			"IFC_entity": "IfcZone",
 			"file_format": [".ifc"],
+			"notify": "BIM-modeler@gmail.com",
 			"checks": [
 				{
 					"name": "Zone Area Check",
@@ -128,6 +131,7 @@
 			"name": "IFC system data check",			
 			"IFC_entity": "IfcSystem",
 			"file_format": [".ifc"],
+			"notify": "HVAC-engineer@gmail.com",
 			"checks": [
 				{
 					"name": "System Assignment Check",
@@ -161,6 +165,7 @@
 			"name": "IFC all model check",			
 			"IFC_entity": "*",
 			"file_format": [".ifc"],
+			"notify": "BIM-manager@gmail.com",
 			"checks": [
 				{
 					"name": "All IFC model check by Script",
