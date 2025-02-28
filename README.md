@@ -162,7 +162,7 @@ Here’s a complete example of a checks array with multiple condition types:
 ```
 
 ## Script-Based Checks
-Custom scripts can be used for advanced validation. Example:
+Custom scripts can be used for advanced validation. In the python code, you can use the value variable as model. Example:
 ```json
 {
   "condition": {
