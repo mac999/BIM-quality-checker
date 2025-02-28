@@ -162,7 +162,16 @@ Here’s a complete example of a checks array with multiple condition types:
 ```
 
 ## Script-Based Checks
-Custom scripts can be used for advanced validation. In the python code, you can use the value variable as model. Example:
+Custom scripts can be used for advanced validation. In the python code, you can use math, numpy as np, bim_rule_issues as rule_issues with the predefined variables like below. 
+- entity_name: object name
+- check_name: check name
+- check_cond: rule check's condition
+- cat: cateogry
+- attribute: attribute of value
+- req_type: check value's type
+- value: object's value which can be integer, float, list, dictionary and model like IFC
+- rule_issues: this is object to manage issues. there are add_issue(entity_name, id, issue, passed), get_total_count(), get_issue_status(rule), print(). TBD.
+Example:
 ```json
 {
   "condition": {
