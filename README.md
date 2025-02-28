@@ -16,8 +16,8 @@ BQC is a web application for checking the quality of BIM datasets, specifically 
   - Custom Python scripts
 - Generate PDF reports summarizing validation results.
 This project will continue to be developed in the future.
-<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img1.JPG" height=300/>
-<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img4.JPG" height=300/>
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img1.JPG" height=200/>
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img4.JPG" height=200/>
 
 ## 0.2 version
 - IFC 4.0 support.
