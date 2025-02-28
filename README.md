@@ -25,7 +25,7 @@ This project will continue to be developed in the future.
 ## 0.3 version
 - BCF 2.0 support (without visualization).
 - Bug fixed. 
-<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img5.JPG" height=400/>
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img5.JPG" height=300/>
 
 ### Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
