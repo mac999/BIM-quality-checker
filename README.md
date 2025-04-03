@@ -25,11 +25,11 @@ This project will continue to be developed in the future.
 ## 0.3 version
 - BCF 2.0 support (without visualization).
 - Bug fixed. 
-<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img5.JPG" height=300/>
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img5.JPG" width=700/>
 
 ## 0.4 version
 - Clash (collision) detection support. To test, use voids.ifc and walls.ifc in sample folder.
-<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img6.JPG" height=300/>
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img6.JPG" width=700/>
 
 ### Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
