@@ -27,6 +27,10 @@ This project will continue to be developed in the future.
 - Bug fixed. 
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img5.JPG" height=300/>
 
+## 0.4 version
+- Clash (collision) detection support.
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img6.JPG" height=300/>
+
 ### Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
 
