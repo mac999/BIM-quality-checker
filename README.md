@@ -28,7 +28,7 @@ This project will continue to be developed in the future.
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img5.JPG" height=300/>
 
 ## 0.4 version
-- Clash (collision) detection support.
+- Clash (collision) detection support. To test, use voids.ifc and walls.ifc in sample folder.
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img6.JPG" height=300/>
 
 ### Future plan
