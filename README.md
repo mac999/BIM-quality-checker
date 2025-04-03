@@ -30,6 +30,7 @@ This project will continue to be developed in the future.
 ## 0.4 version
 - Clash (collision) detection support. To test, use voids.ifc and walls.ifc in sample folder.
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img6.JPG" width=700/>
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img7.JPG" width=700/>
 
 ### Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
