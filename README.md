@@ -116,6 +116,20 @@ Validates an attribute using a custom mathematical condition.
 - equation: A mathematical formula or logic (e.g., value > 100).
 - units: Specifies the unit of measurement.
 
+
+### Clash Validation
+Clash (collision) detection between two elements in IFC files. In example, 
+```json
+"clash_check_file": "walls.ifc",
+"condition": {
+	"type": "collision",
+	"IFC_entity": "IfcWall"
+}
+```
+- type: clash detection type (only collision in 0.4 version).
+- IFC_entity: Specifies target IFC entity type of clash_check_file IFC file.
+
+
 ### List Validation
 Validates that an attribute matches a predefined list of categories.
 ```json
