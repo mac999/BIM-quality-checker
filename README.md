@@ -119,7 +119,7 @@ Validates an attribute using a custom mathematical condition.
 
 
 ### Clash Validation
-Clash (collision) detection between two elements in IFC files. In example, 
+Clash (collision) detection between two elements [IFC class](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/annex-b.html) in IFC files. In example, 
 ```json
 "clash_check_file": "walls.ifc",
 "condition": {
