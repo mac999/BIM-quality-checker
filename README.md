@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9a369546-bacc-4762-8239-d565d70e29dd)# BIM Quality Checker (BQC)
+# BIM Quality Checker (BQC)
 BQC is a web application for checking the quality of BIM datasets, specifically IFC and COBie files. It provides a user-friendly interface to upload these files, validate them for quality issues, and generate a comprehensive report.</br>
 [BIM quality checker web application link](https://bim-data-quality-checker.fly.dev/)</br>
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img2.gif" width=800/>
