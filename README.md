@@ -33,7 +33,7 @@ This project will continue to be developed in the future.
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img7.JPG" width=700/>
 
 ## 0.5 version 
-- Plan to support 3D viewer of BIM like below.
+- Support to check BIM elements which have issues in 3D viewer like below (TBD).
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img8.JPG" width=700/>
 
 ### Future plan
