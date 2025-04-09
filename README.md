@@ -35,6 +35,7 @@ This project will continue to be developed in the future.
 ## 0.5 version 
 - Support to check BIM elements which have issues in 3D viewer like below (TBD).
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img8.JPG" width=700/>
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img9.JPG" width=700/>
 
 ### Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
