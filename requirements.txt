@@ -1,0 +1,13 @@
+Gradio
+reportlab
+pandas
+openpyxl
+fpdf
+fastapi
+pydantic
+ifcopenshell
+trimesh
+scipy
+bcf-client
+matplotlib
+numpy
