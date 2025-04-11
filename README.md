@@ -74,7 +74,7 @@ The `validation_rules` section defines multiple validation checks for different 
 ```json
 {
   "name": "COBie data check",
-  "COBie_table": "Space",
+  "entity": "Space",
   "file_format": [".xlsx", ".xls", ".csv"],
   "classification_system": "uniclass(2015), omniclass",
   "checks": [ ... ]
@@ -89,7 +89,7 @@ Validates COBie `Space` tables. Includes checks for:
 ```json
 {
   "name": "IFC space data check",
-  "IFC_entity": "IfcSpace",
+  "entity": "IfcSpace",
   "file_format": [".ifc"],
   "classification_system": "uniclass(2015), omniclass",
   "checks": [ ... ]
@@ -136,10 +136,12 @@ Clash (collision) detection between two elements [IFC class](https://ifc43-docs.
 "clash_check_file": "walls.ifc",
 "condition": {
 	"type": "collision",
+	"option": "each_file",
 	"IFC_entity": "IfcWall"
 }
 ```
 - type: clash detection type (only collision in 0.4 version).
+- option: each_file for checking between one and another BIM file.
 - IFC_entity: Specifies target IFC entity type of clash_check_file IFC file.
 
 
