@@ -1,0 +1,1 @@
+print('cobie model check script')

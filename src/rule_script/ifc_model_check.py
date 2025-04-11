@@ -1,0 +1,1 @@
+print('ifc model check script')
