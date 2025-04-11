@@ -39,6 +39,14 @@ This project will continue to be developed in the future.
 ### Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
 
+# Source code installation
+To install source code and run it, follow the below and open [http://127.0.0.1:7860](http://127.0.0.1:7860)
+```
+git clone https://github.com/mac999/BIM-quality-checker
+pip install -r requirements.txt
+python ./src/app.py
+```
+
 # Instruct
 - 1. Upload [BIM Check Ruleset JSON Configuration File](https://github.com/mac999/BIM-quality-checker/blob/main/bim-check-config.json)
 - 2. Upload BIM Files (COBie xlsx, csv. IFC. LandXML)
