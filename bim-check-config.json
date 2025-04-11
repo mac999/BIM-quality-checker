@@ -61,7 +61,7 @@
 					"attribute": "Classification",
 					"condition": {
 						"type": "code",
-						"code": "print('code check')/nprint(value)/nissue_list.add('cls', 'all', 'check', check_name, False)"
+						"code": "print('code check')/nprint(value)/nself.add_result_in_check(object_id, check, f'{attribute} satisfies equation', False)"
 					}
 				}, 
 				{
@@ -101,7 +101,7 @@
 					"attribute": "Classification",
 					"condition": {
 						"type": "code",
-						"code": "print('code check')/nprint(value)/nissue_list.add('cls', 'all', 'check', False)"
+						"code": "print('code check')/nprint(value)/nself.add_result_in_check(object_id, check, f'{attribute} satisfies equation', False)"
 					}
 				}
 			]
@@ -109,7 +109,7 @@
 		{
 			"name": "IFC clash check",			
 			"entity": "IfcBuildingElementProxy",
-			"file_format": ["voids.ifc"],
+			"file_format": [".ifc"],
 			"classification_system": "uniclass(2015), omniclass",
 			"notify": "BIM-coordinator@gmail.com",
 			"checks": [			
@@ -119,6 +119,7 @@
 					"clash_check_file": "walls.ifc",
 					"condition": {
 						"type": "collision",
+						"option": "each_file",
 						"entity": "IfcWall"
 					}
 				}
