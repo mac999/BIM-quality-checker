@@ -11,3 +11,4 @@ scipy
 bcf-client
 matplotlib
 numpy
+openai
