@@ -39,7 +39,7 @@ This project will continue to be developed in the future.
 
 ## 0.45 version
 - Support LLM such as ChatGPT to check ruleset 
-<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img10.PNG" width=700/>
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img11.PNG" width=700/>
 
 ### Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
