@@ -115,7 +115,7 @@
 			"checks": [			
 				{
 					"name": "Clash detection check in IFC",
-					"description": "Ensure there are no clashes between walls and columns",
+					"description": "Ensure there are no clashes between walls and other elements",
 					"clash_check_file": "walls.ifc",
 					"condition": {
 						"type": "collision",
