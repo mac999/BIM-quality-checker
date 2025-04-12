@@ -205,12 +205,14 @@ Custom scripts can be used for advanced validation. In the python code, you can 
 - req_type: check value's type
 - value: object's value which can be integer, float, list, dictionary and model like IFC
 - guids: object GUID list
-- check: check rule consists of condition
+- check: check rule consists of condition. refer to the Ruleset Configuration File (JSON).
 - self: condition object
 - add_result_in_check: Function of condition object. Prototype = self.add_result_in_check(object_id, check, issue, passed, GUIDs=[], models=[])
 
 | Parameter | Description                             |
 | --------- | --------------------------------------- |
+| object_id | refer to the above variable             |
+| check     | refer to the above variable             |
 | issue     | issue description                       |
 | passed    | check result like True, False           |
 | GUIDs     | GUID list of IFC if they are existed    |
