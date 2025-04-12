@@ -75,6 +75,26 @@
 			]
 		},
 		{
+			"name": "IFC door data check by LLM",			
+			"entity": "IfcDoor",
+			"file_format": [".ifc"],
+			"classification_system": "uniclass(2015), omniclass",
+			"notify": "BIM-modeler@gmail.com",
+			"checks": [			
+				{
+					"name": "Check Door Clearance Compliance Using LLM",
+					"description": "Ensures that all doors meet the minimum clearance standards.",
+					"attribute": "Pset_DoorCommon.Reference",	
+					"condition": {
+						"type": "LLM",
+						"model": "gpt-4o",
+						"api_key": "", 
+						"prompt": "Verify the value which has a clearance width of at least 900mm and height of 2100mm."
+					}
+				}	
+			]
+		},
+		{
 			"name": "IFC space data check",			
 			"entity": "IfcSpace",
 			"file_format": [".ifc"],
@@ -103,7 +123,7 @@
 						"type": "code",
 						"code": "print('code check')/nprint(value)/nself.add_result_in_check(object_id, check, f'{attribute} satisfies equation', False)"
 					}
-				}
+				}			
 			]
 		},
 		{
