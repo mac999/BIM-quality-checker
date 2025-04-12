@@ -3,6 +3,8 @@
 # description: BIM Quality Checker application using Gradio
 # email: laputa99999@gmail.com
 import os, json, math, shutil, numpy as np, re, pandas as pd, ifcopenshell, ifcopenshell.geom, ctypes, multiprocessing 
+import openai, textwrap
+from openai import OpenAI
 from tqdm import tqdm
 
 def check_valid_code(code):
@@ -10,6 +12,24 @@ def check_valid_code(code):
 	for func in invalid_functions:
 		if func in code:
 			raise ValueError(f'Invalid function {func} in code')
+
+def preprocess_code(text: str) -> str:
+	try:
+		match = re.search(r'```python\n(.*?)```', text, re.DOTALL) # extract code from text between ```python\n and ```
+		code = match.group(1).strip()
+		code = code.replace('\t', '    ')
+		code = textwrap.dedent(code)
+		check_valid_code(code)
+	except IndentationError as e:
+		print(f"IndentationError detected: {e}")
+		code = ''
+	except SyntaxError as e:
+		print(f"SyntaxError detected: {e}")
+		code = ''
+	except Exception as e:
+		print(f"Error: {e}")
+		code = ''
+	return code
 
 class condition:
 	checker = None
@@ -153,6 +173,71 @@ class condition:
 				code = check_cond['code']
 				code = code.replace('/n', '\n')
 				exec(code)
+
+			elif req_type == 'LLM':
+				# Extract LLM-related configuration
+				model = check_cond.get('model', 'gpt-4o')  # Default to gpt-4o
+				api_key = check_cond.get('api_key', '')  # API key for the LLM
+				prompt_template = check_cond.get('prompt', '')
+				
+				instruct = f'**User query**\nCoding BIM data check python program considering the below **user query**, **context data**, **predefined varables functions** without the complicated grammar like lamda and function under user request. Do not generate the library import, explanation text like "#", inline comments. **user query** = {prompt_template}.'
+
+				context_data = {
+					"object_id": object_id,
+					"entity_name": entity_name,
+					"check_name": check_name,
+					"check_cond": check_cond,
+					"cat": cat,
+					"attribute": attribute,
+					"req_type": req_type,
+					"value": value,
+					"guids": guids,
+					"check": check,
+				}
+				context_text = f'**Context data**\n{json.dumps(context_data, indent=2)}'
+
+				predefined_prototype = f"""**Predefined varables functions**\n
+You can uses the below predefined varables and functions including predefined math, re, numpy as np library.
+
+object_id: object id in case of IFC
+entity_name: object name
+check_name: check name
+cat: category
+attribute: attribute of value
+req_type: check value's type
+value: object's value. {value}
+guids: object GUID list
+check: check rule consists of condition. refer to the Ruleset Configuration File (JSON).
+self: this condition object
+add_result_in_check: function to add result of this rule condition check. ex) self.add_result_in_check(object_id, check, issue, passed, GUIDs=[], models=[])
+	issue	issue description text incuding the object's value
+	passed	check result boolean like True, False
+	GUIDs	GUID list of IFC if they are existed
+	models	BIM model list like IFC
+				"""
+				user_prompt = f"{instruct}"
+				system_prompt = f"{context_text}\n\n{predefined_prototype}"
+
+				client = OpenAI(api_key=api_key)
+				response = client.chat.completions.create(
+						model="gpt-4o",
+						messages=[
+							{
+								"role": "system",
+								"content": system_prompt
+							},
+							{
+							"role": "user",
+							"content": user_prompt
+							}
+						],
+						temperature=0.1,
+						max_tokens=1024,
+						top_p=1
+					)
+				generated_code = response.choices[0].message.content
+				code = preprocess_code(generated_code)
+				exec(code)				
 
 			elif req_type == 'script':
 				script_file = check_cond['script_file']
