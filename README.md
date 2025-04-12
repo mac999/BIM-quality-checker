@@ -38,7 +38,7 @@ This project will continue to be developed in the future.
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img9.JPG" width=700/>
 
 ## 0.45 version
-- Support LLM such as ChatGPT to check ruleset. It's still not perfect as it's an experimental feature. In detail, refer to [LLM based quality check](### LLM based quality check)
+- Support LLM such as ChatGPT to check ruleset. It's still not perfect as it's an experimental feature. In detail, refer to [LLM based quality check](###LLM based quality check)
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img11.PNG" width=700/>
 
 ### Future plan
