@@ -1,5 +1,5 @@
 # BIM Quality Checker (BQC)
-BQC is a web application for checking the quality of BIM datasets, specifically IFC and COBie files. It provides a user-friendly interface to upload these files, validate them for quality issues, and generate a comprehensive report.</br>
+BQC is simple web application for checking the quality of BIM datasets, specifically IFC and COBie files. It supports IFC, COBie for the data integrity using the predefine rule, code, BCF, LLM(Large Language Model). It provides a user-friendly interface to upload these files, validate them for quality issues, and generate a comprehensive report.</br>
 [BIM quality checker web application link](https://bim-data-quality-checker.fly.dev/)</br>
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img2.gif" width=800/></br>
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img10.gif" width=800/>
@@ -33,9 +33,13 @@ This project will continue to be developed in the future.
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img6.JPG" width=700/>
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img7.JPG" width=700/>
 
-## 0.5 version 
-- Support to check BIM elements which have issues in 3D viewer like below (TBD).
+## 0.43 version 
+- Support to check BIM elements which have issues in 3D viewer like below
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img9.JPG" width=700/>
+
+## 0.45 version
+- Support LLM such as ChatGPT to check ruleset 
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img10.PNG" width=700/>
 
 ### Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
@@ -236,6 +240,20 @@ or
   }
 }
 ```
+
+### LLM based quality check
+Support to check the dataset of models using LLM such as ChatGPT. To use, you need to enter your OpenAI api_key and enter the appropriate prompt. Note that depending on the size of the quality check target dataset, many tokens may be used. This is currently an experimental feature, and research will be conducted to reduce the number of tokens used effectively.
+```json
+{
+  "type": "LLM",
+  "model": "gpt-4o",
+  "api_key": "", 
+  "prompt": "Verify the value which has a clearance width of at least 900mm and height of 2100mm."
+}
+```
+- model: model name such as gpt-4o
+- api_key: your OpenAI API key
+- prompt: input your prompt to check the data value of the entity in the check element. ex) "entity": "IfcDoor"
 
 # License
 Develop by Taewook Kang (laputa99999@gmail.com)
