@@ -208,8 +208,9 @@ Custom scripts can be used for advanced validation. In the python code, you can 
 - check: check rule consists of condition
 - self: condition object
 - add_result_in_check: Function of condition object. Prototype = self.add_result_in_check(object_id, check, issue, passed, GUIDs=[], models=[])
+
 | Parameter | Description                             |
-|-----------|-----------------------------------------|
+| --------- | --------------------------------------- |
 | issue     | issue description                       |
 | passed    | check result like True, False           |
 | GUIDs     | GUID list of IFC if they are existed    |
