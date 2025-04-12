@@ -241,6 +241,9 @@ or
 Develop by Taewook Kang (laputa99999@gmail.com)
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
+# Contribution
+Welcome your contribution.
+
 # Reference
 - [UK BIM Alliance](https://wearenima.im/resources/bim-collaboration-format-bcf/)
 - [BCF-XML](https://github.com/BuildingSMART/BCF-XML)
