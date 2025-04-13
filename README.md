@@ -73,7 +73,7 @@ The tool uses a JSON configuration file to define the validation rules. Below ar
 Defines basic project information, including the name, description, version, author, and contact email.
 
 ## Validation Rules
-The `validation_rules` consists of checks which have section defines multiple validation checks for different BIM data types.
+The `validation_rules` consists of checks which have section defines multiple validation check for different BIM data types.
 ```json
 "validation_rules": [
 {
