@@ -177,7 +177,7 @@ class condition:
 
 			elif req_type == 'LLM':
 				# Extract LLM-related configuration
-				model = check_cond.get('model', 'gpt-4o')  # Default to gpt-4o
+				model = check_cond.get('model', 'gpt-4o')  # https://openai.com/api/pricing/
 				api_key = check_cond.get('api_key', '')  # API key for the LLM
 				prompt_template = check_cond.get('prompt', '')
 				
@@ -219,14 +219,14 @@ add_result_in_check: function to add result of this rule condition check. ex) se
 				system_prompt = f"{context_text}\n\n{predefined_prototype}"
 
 				client = OpenAI(api_key=api_key)
-				response = client.chat.completions.create(model="gpt-4o", messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}], temperature=0.1, max_tokens=1024, top_p=1)
+				response = client.chat.completions.create(model=model, messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}], temperature=0.1, max_tokens=1024, top_p=1)
 				generated_code = response.choices[0].message.content
 				code = preprocess_code(generated_code)
 				try:
 					exec(code)
 					debug_flag = True
 				except Exception as e:
-					response = client.chat.completions.create(model="gpt-4o", messages=[{"role": "system", "content": f"Fix the error. Do not generate lambda, python grammar like import, def function, explanation text like '#', inline comments."}, {"role": "user", "content": f"Fix the error, {str(e)} in the code{code}."}], temperature=0.1, max_tokens=1024, top_p=1)
+					response = client.chat.completions.create(model=model, messages=[{"role": "system", "content": f"Fix the error. Do not generate lambda, python grammar like import, def function, explanation text like '#', inline comments."}, {"role": "user", "content": f"Fix the error, {str(e)} in the code{code}."}], temperature=0.1, max_tokens=1024, top_p=1)
 					generated_code = response.choices[0].message.content
 					code = preprocess_code(generated_code)
 					exec(code)
