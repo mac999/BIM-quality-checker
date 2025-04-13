@@ -76,7 +76,7 @@
 		},
 		{
 			"name": "IFC door data check by LLM",			
-			"entity": "IfcDoor",
+			"entity": "IfcDoorStyle",
 			"file_format": [".ifc"],
 			"classification_system": "uniclass(2015), omniclass",
 			"notify": "BIM-modeler@gmail.com",
@@ -84,7 +84,7 @@
 				{
 					"name": "Check Door Clearance Compliance Using LLM",
 					"description": "Ensures that all doors meet the minimum clearance standards.",
-					"attribute": "Pset_DoorCommon.Reference",	
+					"attribute": "Element.Name",	
 					"condition": {
 						"type": "LLM",
 						"model": "gpt-4o",
