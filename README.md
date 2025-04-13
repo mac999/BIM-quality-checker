@@ -73,7 +73,31 @@ The tool uses a JSON configuration file to define the validation rules. Below ar
 Defines basic project information, including the name, description, version, author, and contact email.
 
 ## Validation Rules
-The `validation_rules` section defines multiple validation checks for different BIM data types.
+The `validation_rules` consists of checks which have section defines multiple validation checks for different BIM data types.
+```json
+"validation_rules": [
+{
+  "name": "COBie data check",
+  "entity": "Space",
+  "file_format": [".xlsx", ".xls", ".csv"],
+  "classification_system": "uniclass(2015), omniclass",
+  "notify": "BIM-coordinator@gmail.com",
+  "checks": [
+    {
+      "name": "Area Check",
+      "description": "Validate the gross floor area of spaces",
+      "attribute": "GrossArea",
+      "condition": { ... }
+    },
+  ]
+}
+]
+```
+- entity: entity to check it's value. entity can be IFC element type (ex. IfcDoor), COBie worksheet's name (ex. Space) etc.
+- file_format: checking files format.
+- classification_system: information classification of the files. it's just explaination.
+- notify: if there are problem in the checks, input the responsible person contact email.
+- checks: consists of name, description and attribute for checking the value in properties. The entity has default properties category "Element" as default properties which have "Name", "OperationType", "Tag" in case of IFC.
 
 ## COBie Data Validation
 ```json
@@ -244,12 +268,19 @@ or
 ### LLM based quality check
 Support to check the dataset of models using LLM such as ChatGPT. To use, you need to enter your OpenAI api_key and enter the appropriate prompt. Note that depending on the size of the quality check target dataset, many tokens may be used. This is currently an experimental feature, and research will be conducted to reduce the number of tokens used effectively.
 ```json
-{
-  "type": "LLM",
-  "model": "gpt-4o",
-  "api_key": "", 
-  "prompt": "Verify the value which has a clearance width of at least 900mm and height of 2100mm."
-}
+"checks": [			
+  {
+    "name": "Check Door Clearance Compliance Using LLM",
+    "description": "Ensures that all doors meet the minimum clearance standards.",
+    "attribute": "Element.Name",	
+    "condition": {
+      "type": "LLM",
+      "model": "gpt-4o",
+      "api_key": "", 
+      "prompt": "Verify the value which has a clearance width of at least 900mm and height of 2100mm."
+  }
+}	
+]
 ```
 - model: model name such as gpt-4o
 - api_key: your OpenAI API key
