@@ -202,7 +202,7 @@ def view_all_mesh_file(input_fnames, enable_viewer):
 	return output_path
 
 with gr.Blocks(title='BIM Quality Checker', theme="default", fill_height=True) as interface: # css=".gradio-container { width: 1200px; }"
-	gr.Markdown("# BIM Quality Checker (ver 0.45. prototype)")
+	gr.Markdown("# BIM Quality Checker (ver 0.46. prototype)")
 	gr.Markdown("## Instructions")
 	with gr.Row(): # equal_height=True):
 		gr.Markdown("1. Upload BIM Check [Ruleset JSON](https://github.com/mac999/BIM-quality-checker/blob/main/bim-check-config.json) Configuration File</br>2. Upload [BIM Files](https://github.com/mac999/BIM-quality-checker/tree/main/sample_data) (COBie xlsx, csv. IFC. LandXML)</br>3. Click 'Run' to check BIM data quality</br>4. Download the Quality Report")
