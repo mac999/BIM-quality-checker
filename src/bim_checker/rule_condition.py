@@ -13,10 +13,11 @@ def check_valid_code(code):
 		if func in code:
 			raise ValueError(f'Invalid function {func} in code')
 
-def preprocess_code(text: str) -> str:
+def preprocess_code(code: str) -> str:
 	try:
-		match = re.search(r'```python\n(.*?)```', text, re.DOTALL) # extract code from text between ```python\n and ```
-		code = match.group(1).strip()
+		match = re.search(r'```python\n(.*?)```', code, re.DOTALL) # extract code from text between ```python\n and ```
+		if match:
+			code = match.group(1).strip()
 		code = code.replace('\t', '    ')
 		code = textwrap.dedent(code)
 		check_valid_code(code)
@@ -37,9 +38,9 @@ class condition:
 	def __init__(self, checker):
 		self = checker
 
-	def add_result_in_check(self, object_id, rule_check, issue, passed, GUIDs=[], models=[]):
-		if 'results' not in rule_check:
-			rule_check['results'] = []
+	def add_result_in_check(self, object_id, check, issue, passed, GUIDs=[], models=[]):
+		if 'results' not in check:
+			check['results'] = []
 		result = {
 			'object_id': object_id,
 			'issue': issue,
@@ -47,7 +48,7 @@ class condition:
 			'GUID': GUIDs,
 			'models': models
 		}
-		rule_check['results'].append(result)
+		check['results'].append(result)
 
 	def evaluate_clash_ifc(self, object_type, check, ifc_model_A, ifc_model_B, ifc_type_B, ifc_entity_A):
 		'''
@@ -180,34 +181,33 @@ class condition:
 				api_key = check_cond.get('api_key', '')  # API key for the LLM
 				prompt_template = check_cond.get('prompt', '')
 				
-				instruct = f'**User query**\nCoding BIM data check python program considering the below **user query**, **context data**, **predefined varables functions** without the complicated grammar like lamda and function under user request. Do not generate the library import, explanation text like "#", inline comments. **user query** = {prompt_template}.'
+				instruct = f'**User query**\nCoding BIM object value check python code considering the below **user query**, **context data**, **predefined varables functions** without the lamda under user request. Do not generate python grammar like import, def function, explanation text like "#", inline comments. **user query** = {prompt_template}.'
 
 				context_data = {
-					"object_id": object_id,
+					# "object_id": object_id,
 					"entity_name": entity_name,
-					"check_name": check_name,
+					# "check_name": check_name,
 					"check_cond": check_cond,
 					"cat": cat,
 					"attribute": attribute,
 					"req_type": req_type,
 					"value": value,
 					"guids": guids,
-					"check": check,
+					"check": {k: v for k, v in check.items() if k not in ['condition', 'results']},
 				}
 				context_text = f'**Context data**\n{json.dumps(context_data, indent=2)}'
 
 				predefined_prototype = f"""**Predefined varables functions**\n
-You can uses the below predefined varables and functions including predefined math, re, numpy as np library.
+You're expert for coding in BIM. You need to understand **user query** and the value to check by rule condition. You can uses the below predefined varables and functions including predefined math, re, numpy as np library to make python code.
 
 object_id: object id in case of IFC
 entity_name: object name
-check_name: check name
 cat: category
 attribute: attribute of value
 req_type: check value's type
-value: object's value. {value}
+value: object value. {value}
 guids: object GUID list
-check: check rule consists of condition. refer to the Ruleset Configuration File (JSON).
+check: check rule consists of condition. 
 self: this condition object
 add_result_in_check: function to add result of this rule condition check. ex) self.add_result_in_check(object_id, check, issue, passed, GUIDs=[], models=[])
 	issue	issue description text incuding the object's value
@@ -219,25 +219,18 @@ add_result_in_check: function to add result of this rule condition check. ex) se
 				system_prompt = f"{context_text}\n\n{predefined_prototype}"
 
 				client = OpenAI(api_key=api_key)
-				response = client.chat.completions.create(
-						model="gpt-4o",
-						messages=[
-							{
-								"role": "system",
-								"content": system_prompt
-							},
-							{
-							"role": "user",
-							"content": user_prompt
-							}
-						],
-						temperature=0.1,
-						max_tokens=1024,
-						top_p=1
-					)
+				response = client.chat.completions.create(model="gpt-4o", messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}], temperature=0.1, max_tokens=1024, top_p=1)
 				generated_code = response.choices[0].message.content
 				code = preprocess_code(generated_code)
-				exec(code)				
+				try:
+					exec(code)
+					debug_flag = True
+				except Exception as e:
+					response = client.chat.completions.create(model="gpt-4o", messages=[{"role": "system", "content": f"Fix the error. Do not generate lambda, python grammar like import, def function, explanation text like '#', inline comments."}, {"role": "user", "content": f"Fix the error, {str(e)} in the code{code}."}], temperature=0.1, max_tokens=1024, top_p=1)
+					generated_code = response.choices[0].message.content
+					code = preprocess_code(generated_code)
+					exec(code)
+					debug_flag = True
 
 			elif req_type == 'script':
 				script_file = check_cond['script_file']

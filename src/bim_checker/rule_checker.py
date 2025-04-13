@@ -84,7 +84,25 @@ class rule_checker:
 	def get_ifc_property_set(self, ifc_object):
 		pset_list = []
 
-		property_sets = ifc_object.IsDefinedBy
+		element_pset = {'category': 'Element', 'properties': []}
+		attributes = dir(ifc_object)
+		for attr in attributes:
+			if attr.startswith('_') or callable(getattr(ifc_object, attr)):
+				continue
+			if attr not in ['ConstructionType', 'Name', 'OperationType', 'Tag']:
+				continue
+			value = getattr(ifc_object, attr)
+			unit = None
+
+			prop = {'name': attr, 'value': value, 'unit': unit}
+			element_pset['properties'].append(prop)
+		pset_list.append(element_pset)
+
+		if hasattr(ifc_object, 'IsDefinedBy'):
+			property_sets = ifc_object.IsDefinedBy
+		else:
+			property_sets = []
+			
 		for property_set in property_sets:
 			if property_set.is_a('IfcRelDefinesByProperties') == False:
 				continue
