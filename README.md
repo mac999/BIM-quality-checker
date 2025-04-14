@@ -41,7 +41,7 @@ This project will continue to be developed in the future.
 - Support LLM such as ChatGPT to check ruleset. It's still not perfect as it's an experimental feature. In detail, refer to LLM based quality check in Rule Condition chapter.
 <img src="https://github.com/mac999/BIM-quality-checker/blob/main/img11.PNG" width=700/>
 
-### Future plan
+## Future plan
 Add more features including LandXML, IFC various types, visualzation support. 
 
 # Source code installation
@@ -58,6 +58,10 @@ python app.py
 - 2. Upload BIM Files (COBie xlsx, csv. IFC. LandXML)
 - 3. Click 'Run' to check BIM data quality
 - 4. Download the Quality Report
+
+# Software Architecture 
+The below is SAD(Software Architecture Design)(UML).  
+<img src="https://github.com/mac999/BIM-quality-checker/blob/main/img12.PNG" width=600/>
 
 # Ruleset Configuration File
 The tool uses a JSON configuration file to define the validation rules. Below are the main sections:
